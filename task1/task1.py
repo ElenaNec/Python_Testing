@@ -22,9 +22,15 @@
 # Например, для последнего примера на вход подаются аргументы: 5 4, ожидаемый
 # вывод в консоль: 14253
 
+import sys
 
-n = int(input('n= '))
-m = int(input('m= '))
+if len(sys.argv) != 3:
+    print("Use the format: python task1.py 'n' 'm'")
+    sys.exit(1)
+
+
+n = int(sys.argv[1])  # input 'n'
+m = int(sys.argv[2])  # input 'm'
 
 my_list = []
 circl_list = []

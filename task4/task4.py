@@ -17,6 +17,7 @@
 # 9
 # Вывод в консоль: 16
 
+import sys
 
 def min_moves(nums):
     mean = sum(nums) // len(nums) # вычисляет среднее значение всех чисел в списке
@@ -27,12 +28,16 @@ def min_moves(nums):
 
 
 def run_program():
-    array_file = input('Input path "array_file": ')
+    if len(sys.argv) != 2:
+        print("Use the format: python task4.py array_file")
+        sys.exit(1)
+
+    array_file = sys.argv[1]  # numbers.txt
     try:
         with open(array_file, 'r') as f:
             nums = [int(line.strip()) for line in f]
     except FileNotFoundError:
-        print("File not found.")
+        print(f"File {array_file} not found.")
         return
 
     moves = min_moves(nums)

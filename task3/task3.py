@@ -45,8 +45,12 @@ def update_report_with_values(values_path, tests_path, report_path):
 
 
 if __name__ == "__main__":
-    values_path = input('Input path "values.json": ')
-    tests_path = input('Input path "tests.json": ')
-    report_path = input('Input path "report.json": ')
+    if len(sys.argv) != 4:
+        print("Use the format: python task3.py values_path tests_path report_path")
+        sys.exit(1)
+
+    values_path = sys.argv[1]  # values.json
+    tests_path = sys.argv[2]   # tests.json
+    report_path = sys.argv[3]  # report.json
 
     update_report_with_values(values_path, tests_path, report_path)

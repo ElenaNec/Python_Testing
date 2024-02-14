@@ -42,6 +42,7 @@ def read_circle(filename):
         print(f"Error reading data from {filename}.")
         sys.exit(1)
 
+
 def read_points(filename):
     points = []
     try:
@@ -57,6 +58,7 @@ def read_points(filename):
         print(f"Error reading data from {filename}.")
         sys.exit(1)
 
+
 def point_position(x_center, y_center, radius, x_point, y_point):
     distance_squared = (x_point - x_center) ** 2 + (y_point - y_center) ** 2
     if distance_squared < radius ** 2:
@@ -68,9 +70,12 @@ def point_position(x_center, y_center, radius, x_point, y_point):
 
 
 if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        print("Use the format: python task2.py circle_file points_file")
+        sys.exit(1)
 
-    circle_file = input('Input path "circle_file": ')
-    points_file = input('Input path "points_file": ')
+    circle_file = sys.argv[1]
+    points_file = sys.argv[2]
 
     x_center, y_center, radius = read_circle(circle_file)
     points = read_points(points_file)
